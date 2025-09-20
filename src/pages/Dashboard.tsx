@@ -43,41 +43,133 @@ const Dashboard: React.FC = () => {
     >
       <div className="space-y-6">
         {/* Page Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
-          <p className="text-muted-foreground">Welcome to your analytics overview</p>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Analytics</h1>
+            <p className="text-muted-foreground flex items-center space-x-2">
+              <span>01.08.2022 - 31.08.2022</span>
+              <span className="w-4 h-4 bg-muted rounded flex items-center justify-center">📅</span>
+            </p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
+              <span className="text-sm">☀️</span>
+              <span className="text-sm">🔄</span>
+            </div>
+            <div className="w-8 h-8 bg-primary rounded-full"></div>
+          </div>
         </div>
 
         {/* KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <KPICard
-            title="Total Orders"
-            value="8,945"
-            subtitle="This month"
-            trend={{ value: 12.5, isPositive: true }}
-            icon={<ShoppingCart className="w-5 h-5" />}
-          />
-          <KPICard
-            title="Completion %"
-            value="94.2%"
-            subtitle="Success rate"
-            trend={{ value: 2.3, isPositive: true }}
-            icon={<CheckCircle className="w-5 h-5" />}
-          />
-          <KPICard
-            title="Avg TAT"
-            value="1.8 days"
-            subtitle="Processing time"
-            trend={{ value: -8.2, isPositive: true }}
-            icon={<Clock className="w-5 h-5" />}
-          />
-          <KPICard
-            title="Dispute Rate"
-            value="0.8%"
-            subtitle="Quality metric"
-            trend={{ value: -12.5, isPositive: true }}
-            icon={<AlertTriangle className="w-5 h-5" />}
-          />
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Orders</p>
+                <p className="text-3xl font-bold text-foreground">201</p>
+                <p className="text-xs text-success mt-1">↗ 8.2% <span className="text-muted-foreground">since last month</span></p>
+              </div>
+              <div className="w-8 h-8 bg-muted/50 rounded-lg flex items-center justify-center">
+                📋
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Approved</p>
+                <p className="text-3xl font-bold text-foreground">36</p>
+                <p className="text-xs text-success mt-1">↗ 5.4% <span className="text-muted-foreground">since last month</span></p>
+              </div>
+              <div className="w-8 h-8 bg-muted/50 rounded-lg flex items-center justify-center">
+                ✅
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Users</p>
+                <p className="text-3xl font-bold text-foreground">4,890</p>
+                <p className="text-xs text-muted-foreground mt-1">since last month</p>
+              </div>
+              <div className="w-20 h-12 relative">
+                <div className="absolute inset-0 bg-chart-orange rounded-lg opacity-20"></div>
+                <div className="absolute inset-2 bg-chart-orange rounded"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Subscriptions</p>
+                <p className="text-3xl font-bold text-foreground">1,201</p>
+                <p className="text-xs text-muted-foreground mt-1">since last month</p>
+              </div>
+              <div className="w-20 h-12 relative">
+                <div className="absolute inset-0 bg-chart-primary rounded-lg opacity-20"></div>
+                <div className="absolute inset-2 bg-chart-primary rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Second Row KPI Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Month total</p>
+                <p className="text-3xl font-bold text-foreground">25410</p>
+                <p className="text-xs text-destructive mt-1">↘ 0.5% <span className="text-muted-foreground">since last month</span></p>
+              </div>
+              <div className="w-8 h-8 bg-muted/50 rounded-lg flex items-center justify-center">
+                💰
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Revenue</p>
+                <p className="text-3xl font-bold text-foreground">1352</p>
+                <p className="text-xs text-success mt-1">↗ 1.7% <span className="text-muted-foreground">since last month</span></p>
+              </div>
+              <div className="w-8 h-8 bg-muted/50 rounded-lg flex items-center justify-center">
+                💳
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Paid invoices</p>
+                <p className="text-2xl font-bold text-foreground">$30256.23</p>
+                <p className="text-xs text-muted-foreground mt-1">more details here</p>
+              </div>
+              <div className="w-12 h-12 bg-chart-purple/20 rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-chart-purple rounded-full"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Funds received</p>
+                <p className="text-2xl font-bold text-foreground">$150256.23</p>
+                <p className="text-xs text-muted-foreground mt-1">more details here</p>
+              </div>
+              <div className="w-12 h-12 bg-chart-green/20 rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-chart-green rounded-full"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Charts Grid */}

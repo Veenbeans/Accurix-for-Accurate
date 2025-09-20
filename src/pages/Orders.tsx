@@ -24,13 +24,20 @@ const Orders: React.FC = () => {
   const { user } = useAuth();
 
   const getStatusBadge = (status: string) => {
-    const variants: Record<string, any> = {
-      'Completed': 'default',
-      'In Progress': 'secondary',
-      'Pending': 'outline',
-      'Failed': 'destructive',
+    const statusConfig: Record<string, { color: string; bgColor: string; text: string }> = {
+      'Completed': { color: 'text-chart-green', bgColor: 'bg-chart-green/10', text: '● Fulfilled' },
+      'In Progress': { color: 'text-chart-orange', bgColor: 'bg-chart-orange/10', text: '● Pending' },
+      'Pending': { color: 'text-chart-orange', bgColor: 'bg-chart-orange/10', text: '● Pending' },
+      'Failed': { color: 'text-destructive', bgColor: 'bg-destructive/10', text: '● Unfulfilled' },
     };
-    return <Badge variant={variants[status] || 'outline'}>{status}</Badge>;
+    
+    const config = statusConfig[status] || statusConfig['Pending'];
+    
+    return (
+      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${config.color} ${config.bgColor}`}>
+        {config.text}
+      </span>
+    );
   };
 
   const rightPanelContent = (
@@ -60,104 +67,131 @@ const Orders: React.FC = () => {
     >
       <div className="space-y-6">
         {/* Page Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">Orders</h1>
-          <p className="text-muted-foreground">Manage and track all background check orders</p>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Orders</h1>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Button variant="outline">
+              Export to Excel
+            </Button>
+            <Button variant="outline">
+              Import Orders
+            </Button>
+            <Button className="bg-primary text-primary-foreground">
+              + New Order
+            </Button>
+          </div>
         </div>
 
         {/* Filters */}
-        <Card className="p-4">
-          <div className="flex flex-wrap gap-4 items-center">
-            <div className="relative flex-1 min-w-[200px]">
-              <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder="Search orders..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[150px]">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="Completed">Completed</SelectItem>
-                <SelectItem value="In Progress">In Progress</SelectItem>
-                <SelectItem value="Pending">Pending</SelectItem>
-                <SelectItem value="Failed">Failed</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Select value={geoFilter} onValueChange={setGeoFilter}>
-              <SelectTrigger className="w-[150px]">
-                <SelectValue placeholder="Geography" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Regions</SelectItem>
-                <SelectItem value="US">US</SelectItem>
-                <SelectItem value="Canada">Canada</SelectItem>
-                <SelectItem value="UK">UK</SelectItem>
-                <SelectItem value="Australia">Australia</SelectItem>
-                <SelectItem value="Germany">Germany</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Button variant="outline" size="sm">
-              <Filter className="w-4 h-4 mr-2" />
-              More Filters
-            </Button>
+        <div className="flex flex-wrap gap-4 items-center">
+          <div className="relative flex-1 min-w-[200px]">
+            <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+            <Input
+              placeholder="Search Order ID"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 rounded-lg"
+            />
           </div>
-        </Card>
+          
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-[120px] rounded-lg">
+              <SelectValue placeholder="Date" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Dates</SelectItem>
+              <SelectItem value="today">Today</SelectItem>
+              <SelectItem value="week">This Week</SelectItem>
+              <SelectItem value="month">This Month</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select value={geoFilter} onValueChange={setGeoFilter}>
+            <SelectTrigger className="w-[150px] rounded-lg">
+              <SelectValue placeholder="Sales Channel" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Channels</SelectItem>
+              <SelectItem value="online">Online</SelectItem>
+              <SelectItem value="retail">Retail</SelectItem>
+              <SelectItem value="wholesale">Wholesale</SelectItem>
+            </SelectContent>
+          </Select>
+          
+          <Select>
+            <SelectTrigger className="w-[120px] rounded-lg">
+              <SelectValue placeholder="Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Status</SelectItem>
+              <SelectItem value="fulfilled">Fulfilled</SelectItem>
+              <SelectItem value="pending">Pending</SelectItem>
+              <SelectItem value="unfulfilled">Unfulfilled</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Button variant="outline" size="sm" className="rounded-lg">
+            More Filters ↓
+          </Button>
+        </div>
 
         {/* Orders Table */}
         <Card className="overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-muted/50 sticky top-0">
+              <thead className="bg-muted/30">
                 <tr>
-                  <th className="text-left p-4 font-medium">Order ID</th>
-                  <th className="text-left p-4 font-medium">Candidate Name</th>
-                  <th className="text-left p-4 font-medium">Check Type</th>
-                  <th className="text-left p-4 font-medium">Geography</th>
-                  <th className="text-left p-4 font-medium">Status</th>
-                  <th className="text-left p-4 font-medium">Created At</th>
-                  <th className="text-left p-4 font-medium">Completed At</th>
-                  <th className="text-left p-4 font-medium">Actions</th>
+                  <th className="text-left p-4 font-medium text-sm">
+                    <input type="checkbox" className="rounded" />
+                  </th>
+                  <th className="text-left p-4 font-medium text-sm">Order ID</th>
+                  <th className="text-left p-4 font-medium text-sm">Date</th>
+                  <th className="text-left p-4 font-medium text-sm">Customer</th>
+                  <th className="text-left p-4 font-medium text-sm">Sales Channel</th>
+                  <th className="text-left p-4 font-medium text-sm">Destination</th>
+                  <th className="text-left p-4 font-medium text-sm">Items</th>
+                  <th className="text-left p-4 font-medium text-sm">Status</th>
+                  <th className="text-left p-4 font-medium text-sm"></th>
                 </tr>
               </thead>
               <tbody>
-                {ordersTableData.map((order, index) => (
+                {ordersTableData.slice(0, 6).map((order, index) => (
                   <tr 
                     key={order.id}
-                    className={`border-b border-border/50 hover:bg-muted/20 transition-colors ${
-                      index % 2 === 0 ? 'bg-card' : 'bg-muted/10'
-                    }`}
+                    className="border-b border-border/50 hover:bg-muted/10 transition-colors"
                   >
-                    <td className="p-4 font-mono text-sm">{order.id}</td>
                     <td className="p-4">
+                      <input type="checkbox" className="rounded" />
+                    </td>
+                    <td className="p-4">
+                      <span className="text-chart-primary font-medium">#{order.id.replace('ORD-', '')}</span>
+                    </td>
+                    <td className="p-4 text-sm">{order.createdAt}</td>
+                    <td className="p-4 text-sm font-medium">
                       {user?.role === 'Recruiter' ? '****** ******' : order.candidateName}
                     </td>
-                    <td className="p-4 text-sm text-muted-foreground">{order.checkType}</td>
-                    <td className="p-4">
-                      <Badge variant="outline">{order.geography}</Badge>
+                    <td className="p-4 text-sm">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-6 h-6 bg-foreground rounded-full flex items-center justify-center text-background text-xs font-bold">
+                          {order.geography === 'US' ? 'a' : order.geography === 'UK' ? 'E' : '$'}
+                        </div>
+                      </div>
                     </td>
+                    <td className="p-4 text-sm">{order.geography === 'US' ? 'International' : 'Domestic'}</td>
+                    <td className="p-4 text-sm">{Math.floor(Math.random() * 5) + 1}</td>
                     <td className="p-4">
                       {getStatusBadge(order.status)}
-                    </td>
-                    <td className="p-4 text-sm text-muted-foreground">{order.createdAt}</td>
-                    <td className="p-4 text-sm text-muted-foreground">
-                      {order.completedAt || '-'}
                     </td>
                     <td className="p-4">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => setSelectedOrder(order)}
+                        className="w-6 h-6 p-0 rounded-full hover:bg-muted"
                       >
-                        <Eye className="w-4 h-4" />
+                        ❤️
                       </Button>
                     </td>
                   </tr>
