@@ -108,9 +108,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-2xl font-bold text-foreground">$30256.23</p>
                 <p className="text-xs text-muted-foreground mt-1">more details here</p>
               </div>
-              <div className="w-12 h-12 bg-chart-purple/20 rounded-lg flex items-center justify-center">
-                
-              </div>
+              
             </div>
           </div>
           
@@ -121,9 +119,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-2xl font-bold text-foreground">$150256.23</p>
                 <p className="text-xs text-muted-foreground mt-1">more details here</p>
               </div>
-              <div className="w-12 h-12 bg-chart-green/20 rounded-lg flex items-center justify-center">
-                
-              </div>
+              
             </div>
           </div>
         </div>
