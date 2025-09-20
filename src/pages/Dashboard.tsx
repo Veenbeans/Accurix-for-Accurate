@@ -27,17 +27,14 @@ const Dashboard: React.FC = () => {
         <div className="flex justify-between items-start">
           <div>
             <h1 className="text-3xl font-bold mb-2 text-slate-50">Analytics</h1>
-            <p className="text-muted-foreground flex items-center space-x-2">
-              <span className="text-slate-50">01.08.2022 - 31.08.2022</span>
-              <span className="w-4 h-4 bg-muted rounded flex items-center justify-center">📅</span>
-            </p>
+            
           </div>
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
-              <span className="text-sm">☀️</span>
-              <span className="text-sm">🔄</span>
+              
+              
             </div>
-            <div className="w-8 h-8 bg-primary rounded-full"></div>
+            
           </div>
         </div>
 
