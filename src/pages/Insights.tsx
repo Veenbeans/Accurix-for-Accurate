@@ -103,7 +103,7 @@ const Insights: React.FC = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-300px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[500px]">
           {/* Chat Panel */}
           <Card className="flex flex-col">
             <div className="p-4 border-b">
@@ -187,7 +187,7 @@ const Insights: React.FC = () => {
         </div>
 
         {/* Suggested Queries */}
-        <Card className="p-4">
+        <Card className="p-4 mt-6">
           <h3 className="font-semibold mb-4">Suggested Queries</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {chatSuggestions.map((suggestion, index) => (
@@ -195,10 +195,10 @@ const Insights: React.FC = () => {
                 key={index}
                 variant="outline"
                 size="sm"
-                className="h-auto p-3 text-left justify-start whitespace-normal"
+                className="h-auto p-3 text-left justify-start whitespace-normal min-h-[60px]"
                 onClick={() => handleSuggestionClick(suggestion)}
               >
-                <div className="text-xs">{suggestion}</div>
+                <div className="text-xs leading-relaxed">{suggestion}</div>
               </Button>
             ))}
           </div>
