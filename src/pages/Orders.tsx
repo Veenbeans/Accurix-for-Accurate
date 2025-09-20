@@ -143,17 +143,17 @@ const Orders: React.FC = () => {
             <table className="w-full">
               <thead className="bg-muted/30">
                 <tr>
-                  <th className="text-left p-4 font-medium text-sm">
+                  <th className="text-left p-4 font-medium text-sm align-middle">
                     <input type="checkbox" className="rounded" />
                   </th>
-                  <th className="text-left p-4 font-medium text-sm">Order ID</th>
-                  <th className="text-left p-4 font-medium text-sm">Date</th>
-                  <th className="text-left p-4 font-medium text-sm">Customer</th>
-                  <th className="text-left p-4 font-medium text-sm">Sales Channel</th>
-                  <th className="text-left p-4 font-medium text-sm">Destination</th>
-                  <th className="text-left p-4 font-medium text-sm">Items</th>
-                  <th className="text-left p-4 font-medium text-sm">Status</th>
-                  <th className="text-left p-4 font-medium text-sm"></th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Order ID</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Date</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Customer</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Sales Channel</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Destination</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Items</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle">Status</th>
+                  <th className="text-left p-4 font-medium text-sm align-middle"></th>
                 </tr>
               </thead>
               <tbody>
@@ -162,29 +162,29 @@ const Orders: React.FC = () => {
                     key={order.id}
                     className="border-b border-border/50 hover:bg-muted/10 transition-colors"
                   >
-                    <td className="p-4">
+                    <td className="p-4 align-middle">
                       <input type="checkbox" className="rounded" />
                     </td>
-                    <td className="p-4">
+                    <td className="p-4 align-middle">
                       <span className="text-chart-primary font-medium">#{order.id.replace('ORD-', '')}</span>
                     </td>
-                    <td className="p-4 text-sm">{order.createdAt}</td>
-                    <td className="p-4 text-sm font-medium">
+                    <td className="p-4 text-sm align-middle">{order.createdAt}</td>
+                    <td className="p-4 text-sm font-medium align-middle">
                       {user?.role === 'Recruiter' ? '****** ******' : order.candidateName}
                     </td>
-                    <td className="p-4 text-sm">
+                    <td className="p-4 text-sm align-middle">
                       <div className="flex items-center space-x-2">
                         <div className="w-6 h-6 bg-foreground rounded-full flex items-center justify-center text-background text-xs font-bold">
                           {order.geography === 'US' ? 'a' : order.geography === 'UK' ? 'E' : '$'}
                         </div>
                       </div>
                     </td>
-                    <td className="p-4 text-sm">{order.geography === 'US' ? 'International' : 'Domestic'}</td>
-                    <td className="p-4 text-sm">{Math.floor(Math.random() * 5) + 1}</td>
-                    <td className="p-4">
+                    <td className="p-4 text-sm align-middle">{order.geography === 'US' ? 'International' : 'Domestic'}</td>
+                    <td className="p-4 text-sm align-middle">{Math.floor(Math.random() * 5) + 1}</td>
+                    <td className="p-4 align-middle">
                       {getStatusBadge(order.status)}
                     </td>
-                    <td className="p-4">
+                    <td className="p-4 align-middle">
                       <Button
                         variant="ghost"
                         size="sm"
