@@ -173,7 +173,7 @@ const Orders: React.FC = () => {
                       {user?.role === 'Recruiter' ? '****** ******' : order.candidateName}
                     </td>
                     <td className="p-4 text-sm align-middle">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center justify-center space-x-2">
                         <div className="w-6 h-6 bg-foreground rounded-full flex items-center justify-center text-background text-xs font-bold">
                           {order.geography === 'US' ? 'a' : order.geography === 'UK' ? 'E' : '$'}
                         </div>
