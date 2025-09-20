@@ -49,24 +49,7 @@ const Orders: React.FC = () => {
         {config.text}
       </span>;
   };
-  const rightPanelContent = <div className="space-y-3">
-      <div className="p-3 bg-chart-primary/10 rounded-lg">
-        <p className="text-xs font-medium text-chart-primary">Filters Applied</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          Status: {statusFilter !== 'all' ? statusFilter : 'All'}
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Geography: {geoFilter !== 'all' ? geoFilter : 'All'}
-        </p>
-      </div>
-      <div className="p-3 bg-warning/10 rounded-lg">
-        <p className="text-xs font-medium text-warning">Quick Stats</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          {ordersTableData.length} orders displayed
-        </p>
-      </div>
-    </div>;
-  return <DashboardLayout rightPanelContent={rightPanelContent} rightPanelTitle="Order Filters">
+  return <DashboardLayout>
       <div className="space-y-6">
         {/* Page Header */}
         <div className="flex justify-between items-start">

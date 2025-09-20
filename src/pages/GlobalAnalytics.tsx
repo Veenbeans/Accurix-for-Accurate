@@ -12,34 +12,8 @@ import {
 } from '@/data/mockData';
 
 const GlobalAnalytics: React.FC = () => {
-  const rightPanelContent = (
-    <div className="space-y-3">
-      <div className="p-3 bg-success/10 rounded-lg">
-        <p className="text-xs font-medium text-success">Global Performance</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          Australia leads with 96.1% completion rate globally.
-        </p>
-      </div>
-      <div className="p-3 bg-chart-primary/10 rounded-lg">
-        <p className="text-xs font-medium text-chart-primary">Regional Insight</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          US market represents 55% of total global volume.
-        </p>
-      </div>
-      <div className="p-3 bg-warning/10 rounded-lg">
-        <p className="text-xs font-medium text-warning">Growth Opportunity</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          European markets showing 23% YoY growth potential.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <DashboardLayout 
-      rightPanelContent={rightPanelContent}
-      rightPanelTitle="Global Insights"
-    >
+    <DashboardLayout>
       <div className="space-y-6">
         {/* Page Header */}
         <div>

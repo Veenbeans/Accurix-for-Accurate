@@ -24,28 +24,8 @@ const Settings: React.FC = () => {
   const { user, switchRole } = useAuth();
   const { theme, toggleTheme } = useTheme();
 
-  const rightPanelContent = (
-    <div className="space-y-3">
-      <div className="p-3 bg-chart-primary/10 rounded-lg">
-        <p className="text-xs font-medium text-chart-primary">Settings Tips</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          Adjust notification preferences for better workflow management.
-        </p>
-      </div>
-      <div className="p-3 bg-success/10 rounded-lg">
-        <p className="text-xs font-medium text-success">Security</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          Your account has enhanced security features enabled.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <DashboardLayout 
-      rightPanelContent={rightPanelContent}
-      rightPanelTitle="Settings Help"
-    >
+    <DashboardLayout>
       <div className="space-y-6">
         {/* Page Header */}
         <div>

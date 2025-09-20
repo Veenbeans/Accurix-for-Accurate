@@ -7,21 +7,7 @@ import { BarChart } from '@/components/charts/BarChart';
 import { ShoppingCart, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 import { ordersOverTime, statusDistribution, ordersByCheckType, tatTrends, geoStatusData } from '@/data/mockData';
 const Dashboard: React.FC = () => {
-  const rightPanelContent = <div className="space-y-3">
-      <div className="p-3 bg-primary/10 rounded-lg">
-        <p className="text-xs font-medium text-primary">Quick Insight</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          TAT improved by 15% this month across all geographies.
-        </p>
-      </div>
-      <div className="p-3 bg-success/10 rounded-lg">
-        <p className="text-xs font-medium text-success">Performance Alert</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          UK region showing 96% completion rate - highest this quarter.
-        </p>
-      </div>
-    </div>;
-  return <DashboardLayout rightPanelContent={rightPanelContent} rightPanelTitle="Dashboard Insights">
+  return <DashboardLayout>
       <div className="space-y-6">
         {/* Page Header */}
         <div className="flex justify-between items-start">

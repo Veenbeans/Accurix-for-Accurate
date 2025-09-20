@@ -60,36 +60,8 @@ const Insights: React.FC = () => {
     setInputValue(suggestion);
   };
 
-  const rightPanelContent = (
-    <div className="space-y-3">
-      <div className="p-3 bg-chart-primary/10 rounded-lg">
-        <p className="text-xs font-medium text-chart-primary">Suggested Follow-ups</p>
-        <div className="mt-2 space-y-2">
-          <button className="text-xs text-left text-muted-foreground hover:text-foreground transition-colors w-full">
-            Show trend analysis
-          </button>
-          <button className="text-xs text-left text-muted-foreground hover:text-foreground transition-colors w-full">
-            Export this data
-          </button>
-          <button className="text-xs text-left text-muted-foreground hover:text-foreground transition-colors w-full">
-            Compare with last period
-          </button>
-        </div>
-      </div>
-      <div className="p-3 bg-success/10 rounded-lg">
-        <p className="text-xs font-medium text-success">Saved Queries</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          3 queries saved this month
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <DashboardLayout 
-      rightPanelContent={rightPanelContent}
-      rightPanelTitle="AI Assistant"
-    >
+    <DashboardLayout>
       <div className="space-y-6 h-full">
         {/* Page Header */}
         <div className="flex justify-between items-center">

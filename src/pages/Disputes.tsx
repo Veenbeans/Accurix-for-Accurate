@@ -23,28 +23,8 @@ const Disputes: React.FC = () => {
     );
   };
 
-  const rightPanelContent = (
-    <div className="space-y-3">
-      <div className="p-3 bg-destructive/10 rounded-lg">
-        <p className="text-xs font-medium text-destructive">Alert</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          High disputes in US this week. Consider reviewing processes.
-        </p>
-      </div>
-      <div className="p-3 bg-success/10 rounded-lg">
-        <p className="text-xs font-medium text-success">Improvement</p>
-        <p className="text-xs text-muted-foreground mt-1">
-          Resolution time decreased by 25% this month.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <DashboardLayout 
-      rightPanelContent={rightPanelContent}
-      rightPanelTitle="Dispute Alerts"
-    >
+    <DashboardLayout>
       <div className="space-y-6">
         {/* Page Header */}
         <div>
