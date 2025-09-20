@@ -6,50 +6,49 @@ import { Label } from '@/components/ui/label';
 import { Brain, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
-
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { login } = useAuth();
+  const {
+    login
+  } = useAuth();
   const navigate = useNavigate();
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       const success = await login(email, password);
       if (success) {
         toast({
           title: "Login successful",
-          description: "Welcome to Analytics Dashboard",
+          description: "Welcome to Analytics Dashboard"
         });
         navigate('/');
       } else {
         toast({
           title: "Login failed",
           description: "Please check your credentials",
-          variant: "destructive",
+          variant: "destructive"
         });
       }
     } catch (error) {
       toast({
         title: "Error",
         description: "An error occurred during login",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setLoading(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background flex">
+  return <div className="min-h-screen bg-background flex">
       {/* Left Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-8 lg:p-12">
+      <div className="flex-1 flex items-center justify-center p-8 lg:p-12 bg-zinc-200">
         <div className="w-full max-w-md space-y-8">
           {/* Header */}
           <div className="text-center space-y-2">
@@ -64,51 +63,24 @@ const Login: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Username"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 rounded-full px-6 border-2 border-border bg-background"
-                  required
-                />
+                <Input id="email" type="email" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="h-12 rounded-full px-6 border-2 border-border bg-background" required />
               </div>
               
               <div className="relative">
-                <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-12 rounded-full px-6 pr-12 border-2 border-border bg-background"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                >
+                <Input id="password" type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="h-12 rounded-full px-6 pr-12 border-2 border-border bg-background" required />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
 
             <div className="text-center">
-              <button
-                type="button"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
+              <button type="button" className="text-sm text-muted-foreground hover:text-foreground">
                 Forgot Password?
               </button>
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full h-12 rounded-full bg-foreground text-background hover:bg-foreground/90 font-medium"
-              disabled={loading}
-            >
+            <Button type="submit" className="w-full h-12 rounded-full bg-foreground text-background hover:bg-foreground/90 font-medium" disabled={loading}>
               {loading ? 'Signing in...' : 'Login'}
             </Button>
           </form>
@@ -139,7 +111,7 @@ const Login: React.FC = () => {
       {/* Right Side - Illustration */}
       <div className="hidden lg:flex flex-1 items-center justify-center bg-muted/20 p-12 relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-20 bg-slate-50">
           <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-primary/20"></div>
           <div className="absolute bottom-20 right-20 w-24 h-24 rounded-full bg-chart-secondary/20"></div>
           <div className="absolute top-1/2 left-10 w-16 h-16 rounded-full bg-success/20"></div>
@@ -194,8 +166,6 @@ const Login: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Login;
