@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
         {/* Page Header */}
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-3xl font-bold mb-2 text-slate-50">Analytics</h1>
+            <h1 className="text-3xl font-bold mb-2 text-foreground">Analytics</h1>
             
           </div>
           <div className="flex items-center space-x-2">
@@ -43,7 +43,7 @@ const Dashboard: React.FC = () => {
           <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm mb-2 text-slate-50">Orders</p>
+                <p className="text-sm mb-2 text-muted-foreground">Orders</p>
                 <p className="text-3xl font-bold text-foreground">201</p>
                 <p className="text-xs text-success mt-1">↗ 8.2% <span className="text-muted-foreground">since last month</span></p>
               </div>
