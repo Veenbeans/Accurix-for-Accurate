@@ -26,102 +26,60 @@ const Dashboard: React.FC = () => {
 
         {/* KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm mb-2 text-muted-foreground">Orders</p>
-                <p className="text-3xl font-bold text-foreground">201</p>
-                <p className="text-xs text-success mt-1">↗ 8.2% <span className="text-muted-foreground">since last month</span></p>
-              </div>
-              
-            </div>
-          </div>
+          <KPICard
+            title="Orders"
+            value="201"
+            trend={{ value: 8.2, isPositive: true }}
+            icon={<ShoppingCart className="w-5 h-5" />}
+          />
           
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Approved</p>
-                <p className="text-3xl font-bold text-foreground">36</p>
-                <p className="text-xs text-success mt-1">↗ 5.4% <span className="text-muted-foreground">since last month</span></p>
-              </div>
-              
-            </div>
-          </div>
+          <KPICard
+            title="Approved"
+            value="36"
+            trend={{ value: 5.4, isPositive: true }}
+            icon={<CheckCircle className="w-5 h-5" />}
+          />
           
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Users</p>
-                <p className="text-3xl font-bold text-foreground">4,890</p>
-                <p className="text-xs text-muted-foreground mt-1">since last month</p>
-              </div>
-              <div className="w-20 h-12 relative">
-                
-                
-              </div>
-            </div>
-          </div>
+          <KPICard
+            title="Users"
+            value="4,890"
+            subtitle="since last month"
+          />
           
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Subscriptions</p>
-                <p className="text-3xl font-bold text-foreground">1,201</p>
-                <p className="text-xs text-muted-foreground mt-1">since last month</p>
-              </div>
-              <div className="w-20 h-12 relative">
-                
-                
-              </div>
-            </div>
-          </div>
+          <KPICard
+            title="Subscriptions"
+            value="1,201"
+            subtitle="since last month"
+          />
         </div>
         
         {/* Second Row KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Month total</p>
-                <p className="text-3xl font-bold text-foreground">25410</p>
-                <p className="text-xs text-destructive mt-1">↘ 0.5% <span className="text-muted-foreground">since last month</span></p>
-              </div>
-              
-            </div>
-          </div>
+          <KPICard
+            title="Month total"
+            value="25,410"
+            trend={{ value: -0.5, isPositive: false }}
+            icon={<Clock className="w-5 h-5" />}
+          />
           
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Revenue</p>
-                <p className="text-3xl font-bold text-foreground">1352</p>
-                <p className="text-xs text-success mt-1">↗ 1.7% <span className="text-muted-foreground">since last month</span></p>
-              </div>
-              
-            </div>
-          </div>
+          <KPICard
+            title="Revenue"
+            value="1,352"
+            trend={{ value: 1.7, isPositive: true }}
+            icon={<AlertTriangle className="w-5 h-5" />}
+          />
           
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Paid invoices</p>
-                <p className="text-2xl font-bold text-foreground">$30256.23</p>
-                <p className="text-xs text-muted-foreground mt-1">more details here</p>
-              </div>
-              
-            </div>
-          </div>
+          <KPICard
+            title="Paid invoices"
+            value="$30,256.23"
+            subtitle="more details here"
+          />
           
-          <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Funds received</p>
-                <p className="text-2xl font-bold text-foreground">$150256.23</p>
-                <p className="text-xs text-muted-foreground mt-1">more details here</p>
-              </div>
-              
-            </div>
-          </div>
+          <KPICard
+            title="Funds received"
+            value="$150,256.23"
+            subtitle="more details here"
+          />
         </div>
 
         {/* Charts Grid */}
