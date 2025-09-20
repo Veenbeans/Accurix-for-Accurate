@@ -50,6 +50,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({
               outerRadius={100}
               paddingAngle={5}
               dataKey={dataKey}
+              stroke="none"
             >
               {data.map((entry, index) => (
                 <Cell 
