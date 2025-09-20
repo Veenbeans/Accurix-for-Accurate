@@ -142,13 +142,8 @@ const Login: React.FC = () => {
               {/* Task Card */}
               <div className="absolute -bottom-4 right-4 bg-card rounded-lg p-3 shadow-lg border">
                 <p className="text-sm font-medium">Accurix Analytics</p>
-                <p className="text-xs text-muted-foreground">10 Tasks</p>
-                <div className="mt-2 flex items-center space-x-2">
-                  <div className="w-6 h-6 rounded bg-success/20 flex items-center justify-center">
-                    <span className="text-xs text-success">84%</span>
-                  </div>
-                  <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Analytics</span>
-                </div>
+                
+                
               </div>
             </div>
           </div>
