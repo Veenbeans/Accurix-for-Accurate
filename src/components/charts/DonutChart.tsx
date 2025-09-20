@@ -19,11 +19,11 @@ interface DonutChartProps {
 }
 
 const DEFAULT_COLORS = [
-  'hsl(var(--chart-primary))',
-  'hsl(var(--chart-secondary))',
-  'hsl(var(--success))',
-  'hsl(var(--warning))',
-  'hsl(var(--destructive))'
+  'hsl(var(--chart-blue))',
+  'hsl(var(--chart-purple))',
+  'hsl(var(--chart-green))',
+  'hsl(var(--chart-yellow))',
+  'hsl(var(--chart-red))'
 ];
 
 export const DonutChart: React.FC<DonutChartProps> = ({

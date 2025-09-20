@@ -22,10 +22,11 @@ interface BarChartProps {
 }
 
 const DEFAULT_COLORS = [
-  'hsl(var(--chart-primary))',
-  'hsl(var(--chart-secondary))',
-  'hsl(var(--success))',
-  'hsl(var(--warning))'
+  'hsl(var(--chart-blue))',
+  'hsl(var(--chart-purple))',
+  'hsl(var(--chart-green))',
+  'hsl(var(--chart-yellow))',
+  'hsl(var(--chart-red))'
 ];
 
 export const BarChart: React.FC<BarChartProps> = ({

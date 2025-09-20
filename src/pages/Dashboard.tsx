@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <BarChart title="Orders by Check Type" data={ordersByCheckType} dataKey="count" xAxisKey="type" height={350} />
           
-          <LineChart title="TAT Trends" data={tatTrends} dataKey="avgTAT" xAxisKey="month" color="hsl(var(--success))" height={350} />
+          <LineChart title="TAT Trends" data={tatTrends} dataKey="avgTAT" xAxisKey="month" color="hsl(var(--chart-green))" height={350} />
         </div>
 
         <div className="w-full">

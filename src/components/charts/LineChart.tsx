@@ -25,7 +25,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   data,
   dataKey,
   xAxisKey,
-  color = 'hsl(var(--chart-primary))',
+  color = 'hsl(var(--chart-blue))',
   height = 300
 }) => {
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Calendar, LogOut, Sun, Moon, User } from 'lucide-react';
+import React, { useState } from 'react';
+import { LogOut, Sun, Moon, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -12,10 +12,12 @@ import { Badge } from '@/components/ui/badge';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { DatePicker } from '@/components/ui/date-picker';
 
 export const TopNavbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const { user, logout, switchRole } = useAuth();
+  const [selectedDate, setSelectedDate] = useState<Date>();
 
   const handleLogout = () => {
     logout();
@@ -30,10 +32,11 @@ export const TopNavbar: React.FC = () => {
 
       <div className="flex items-center space-x-4">
         {/* Date Filter */}
-        <Button variant="outline" size="sm" className="hover-lift">
-          <Calendar className="w-4 h-4 mr-2" />
-          Last 30 days
-        </Button>
+        <DatePicker 
+          date={selectedDate}
+          onDateChange={setSelectedDate}
+          placeholder="Select date range"
+        />
 
         {/* Theme Toggle */}
         <Button

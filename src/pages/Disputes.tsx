@@ -77,7 +77,7 @@ const Disputes: React.FC = () => {
             data={disputesOverTime}
             dataKey="disputes"
             xAxisKey="month"
-            color="hsl(var(--destructive))"
+            color="hsl(var(--chart-red))"
             height={350}
           />
           
@@ -86,7 +86,7 @@ const Disputes: React.FC = () => {
             data={disputesByGeography}
             dataKey="disputes"
             xAxisKey="geography"
-            colors={['hsl(var(--destructive))']}
+            colors={['hsl(var(--chart-red))']}
             height={350}
           />
         </div>
@@ -98,13 +98,6 @@ const Disputes: React.FC = () => {
             dataKey="value"
             nameKey="name"
             height={350}
-            colors={[
-              'hsl(var(--destructive))',
-              'hsl(var(--warning))',
-              'hsl(var(--chart-primary))',
-              'hsl(var(--chart-secondary))',
-              'hsl(var(--muted-foreground))'
-            ]}
           />
 
           {/* Disputes Table */}
