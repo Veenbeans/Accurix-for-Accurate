@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Dashboard specific colors
+        "dashboard-bg": "hsl(var(--dashboard-bg))",
+        "sidebar-bg": "hsl(var(--sidebar-bg))",
+        "right-panel-bg": "hsl(var(--right-panel-bg))",
+        "kpi-gradient-start": "hsl(var(--kpi-gradient-start))",
+        "kpi-gradient-end": "hsl(var(--kpi-gradient-end))",
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
+        "chart-primary": "hsl(var(--chart-primary))",
+        "chart-secondary": "hsl(var(--chart-secondary))",
+        "neumorphic-shadow-light": "hsl(var(--neumorphic-shadow-light))",
+        "neumorphic-shadow-dark": "hsl(var(--neumorphic-shadow-dark))",
+      },
+      backgroundImage: {
+        'gradient-kpi': 'linear-gradient(135deg, hsl(var(--kpi-gradient-start)), hsl(var(--kpi-gradient-end)))',
+        'gradient-hero': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--chart-secondary)))',
+      },
+      boxShadow: {
+        'neumorphic': '8px 8px 16px hsl(var(--neumorphic-shadow-dark)), -8px -8px 16px hsl(var(--neumorphic-shadow-light))',
+        'neumorphic-inset': 'inset 8px 8px 16px hsl(var(--neumorphic-shadow-dark)), inset -8px -8px 16px hsl(var(--neumorphic-shadow-light))',
       },
       borderRadius: {
         lg: "var(--radius)",
